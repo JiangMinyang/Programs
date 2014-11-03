@@ -12,7 +12,8 @@ void KMP(string s1, string s2) {
     fail[0] = -1;
     int k = -1;
     int j = 0;
-    while (j < s2.length()) {
+    int l2 = s2.length();
+    while (j < l2) {
         if (k == -1 || s2[j] == s2[k]) {
             k++; j++;
             fail[j] = k;
@@ -22,12 +23,13 @@ void KMP(string s1, string s2) {
 
     int i = 0;
     j = 0;
-    while (i < s1.length()) {
+    int l1 = s1.length();
+    while (i < l1) {
         if (j == -1 || s1[i] == s2[j]) {
             i++;    j++;
         }
         else j = fail[j];
-        if (j == s2.length()) cout << i - s2.length() << " ";
+        if (j == l2) cout << i - s2.length() << " ";
     }
     cout << endl;
 }
